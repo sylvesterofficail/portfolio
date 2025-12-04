@@ -1,292 +1,662 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sylvester Edidiong Emmanuel | Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
- <style>
-  * { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-    font-family: 'Segoe UI', sans-serif; 
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sylvester Edidiong Emmanuel — Software Engineer</title>
 
-  body { 
-    background-color: #121212; 
-    color: #fff; 
-    padding: 0 20px 20px; 
-  }
+  <!-- Fonts & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  /* Navbar */
-  nav { 
-    background-color: #1f1f1f; 
-    padding: 10px 20px; 
-    display: flex; 
-    justify-content: center; 
-    gap: 20px; 
-    position: sticky; 
-    top: 0; 
-    z-index: 1000; 
-    border-bottom: 1px solid #333; 
-  }
+  <!-- AOS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
 
-  nav a { 
-    color: #00bcd4; 
-    font-size: 1.2rem; 
-    text-decoration: none; 
-    transition: color 0.3s ease; 
-  }
+  <style>
+    :root{
+      --bg-dark: #0a0e27;
+      --bg-card: #131740;
+      --bg-card-hover: #1a1f4d;
+      --text-primary: #ffffff;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent: #06b6d4;
+      --accent-hover: #0891b2;
+      --accent-light: #67e8f9;
+      --border: rgba(148,163,184,0.1);
+      --shadow: rgba(0,0,0,0.3);
+      --gradient-1: linear-gradient(135deg,#06b6d4 0%,#0891b2 100%);
+      --gradient-2: linear-gradient(135deg,#3b82f6 0%,#2563eb 100%);
+      --radius: 16px;
+      --max-w: 1200px;
+    }
 
-  nav a:hover { 
-    color: #ffffff; 
-  }
+    *{box-sizing:border-box; margin:0; padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--bg-dark);
+      color:var(--text-primary);
+      line-height:1.6;
+    }
 
-  header { 
-    text-align: center; 
-    margin: 2rem 0; 
-  }
+    .container{
+      max-width:var(--max-w);
+      margin:0 auto;
+      padding:2rem 1.5rem;
+    }
 
-  /* Profile Image with animation */
-  .profile-img { 
-    width: 180px; 
-    height: 180px; 
-    border-radius: 50%; 
-    object-fit: cover; 
-    border: 4px solid #555; 
-    margin-bottom: 1rem; 
-    animation: float 3s ease-in-out infinite;
-    transition: transform 0.3s ease;
-  }
+    /* NAVIGATION */
+    nav{
+      position:sticky; top:0; z-index:100;
+      background:rgba(10,14,39,0.95);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+      padding:1rem 0;
+    }
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
+    .nav-container{
+      max-width:var(--max-w);
+      margin:0 auto;
+      padding:0 1.5rem;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
 
-  h1 { 
-    font-size: 2rem; 
-    margin-bottom: 0.5rem; 
-  }
+    .nav-logo{
+      font-size:1.5rem;
+      font-weight:800;
+      background:var(--gradient-1);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
 
-  p.subtitle { 
-    font-size: 1.1rem; 
-    color: #aaa; 
-    margin-bottom: 1.5rem; 
-  }
+    .nav-links{
+      display:flex;
+      gap:2rem;
+      list-style:none;
+    }
 
-  section { 
-    margin-bottom: 3rem; 
-  }
+    .nav-links a{
+      color:var(--text-secondary);
+      text-decoration:none;
+      font-weight:500;
+      font-size:0.95rem;
+      transition:0.3s;
+      display:flex;
+      align-items:center;
+      gap:0.5rem;
+    }
+    .nav-links a:hover{ color:var(--accent-light); }
 
-  .section-title { 
-    font-size: 1.5rem; 
-    margin-bottom: 1rem; 
-    border-bottom: 2px solid #444; 
-    padding-bottom: 0.5rem; 
-  }
+    /* HERO */
+    .hero{
+      padding:4rem 0 6rem;
+      position:relative;
+      overflow:hidden;
+    }
 
-  .cards { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-    gap: 1.5rem; 
-  }
+    .hero::before{
+      content:'';
+      position:absolute;
+      top:-50%; right:-20%;
+      width:60%; height:150%;
+      background:radial-gradient(circle,rgba(6,182,212,0.1) 0%,transparent 70%);
+    }
 
-  .card { 
-    background-color: #1f1f1f; 
-    border-radius: 12px; 
-    padding: 1.2rem; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
-    transition: transform 0.3s ease; 
-  }
+    .hero-content{
+      display:grid;
+      grid-template-columns:1fr 300px;
+      gap:3rem;
+      align-items:center;
+      position:relative;
+      z-index:2;
+    }
 
-  .card:hover { 
-    transform: translateY(-5px); 
-  }
+    .hero-text h1{
+      font-size:3.5rem;
+      font-weight:900;
+      background:linear-gradient(135deg,#fff 0%,#94a3b8 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin-bottom:1rem;
+      line-height:1.1;
+    }
 
-  .card h3 { 
-    margin-bottom: 0.5rem; 
-    font-size: 1.1rem; 
-    color: #00bcd4; 
-  }
+    .subtitle{
+      font-size:1.5rem;
+      color:var(--accent-light);
+      margin-bottom:1.5rem;
+      font-weight:600;
+    }
 
-  .card p { 
-    font-size: 0.95rem; 
-    line-height: 1.4; 
-    color: #ccc; 
-  }
+    .description{
+      color:var(--text-secondary);
+      line-height:1.8;
+      font-size:1.125rem;
+      max-width:600px;
+      margin-bottom:2rem;
+    }
 
-  .card a { 
-    color: #00bcd4; 
-    text-decoration: none; 
-  }
+    .hero-buttons{
+      display:flex;
+      gap:1rem;
+      flex-wrap:wrap;
+    }
 
-  .card a:hover { 
-    text-decoration: underline; 
-  }
+    .btn{
+      padding:0.875rem 2rem;
+      border-radius:12px;
+      font-weight:600;
+      font-size:1rem;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:0.5rem;
+      cursor:pointer;
+      transition:0.3s;
+    }
 
-  footer { 
-    text-align: center; 
-    padding: 1.5rem 0; 
-    color: #aaa; 
-    border-top: 1px solid #333; 
-    font-size: 0.9rem; 
-  }
+    .btn-primary{
+      background:var(--gradient-1);
+      color:white;
+      box-shadow:0 4px 20px rgba(6,182,212,0.3);
+    }
+    .btn-primary:hover{
+      transform:translateY(-2px);
+      box-shadow:0 6px 25px rgba(6,182,212,0.4);
+    }
 
-  @media (max-width: 600px) { 
-    h1 { font-size: 1.5rem; } 
-    nav { flex-wrap: wrap; gap: 15px; } 
-  }
-</style>
+    .btn-secondary{
+      background:transparent;
+      color:var(--accent-light);
+      border:2px solid var(--accent);
+    }
 
+    .btn-secondary:hover{
+      background:rgba(6,182,212,0.1);
+      transform:translateY(-2px);
+    }
 
-  <!-- Navbar -->
-  <nav>
-    <a href="mailto:sylvesterofficail20@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
-    <a href="tel:+2348143972347" title="Phone"><i class="fas fa-phone"></i></a>
-    <a href="https://github.com/sylvesterofficail" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://www.linkedin.com/in/edidiong-sylvester-b91284238" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="https://www.instagram.com/iam_sylvester.1" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-  </nav>
+    .profile-card{
+      background:var(--bg-card);
+      padding:2rem;
+      border-radius:var(--radius);
+      box-shadow:0 10px 40px var(--shadow);
+      text-align:center;
+      border:1px solid var(--border);
+    }
 
-  <!-- Header -->
-  <header>
-    <img src="dp.jpg" alt="Profile Image" class="profile-img">
-    <h1>SYLVESTER EDIDIONG EMMANUEL</h1>
-    <p class="subtitle">Software Engineer | Full-Stack Developer | Machine Learning Enthusiast</p>
-  </header>
+    .profile-img-wrapper{
+      width:200px; height:200px;
+      margin:0 auto 1.5rem;
+    }
 
-  <!-- Professional Summary -->
-  <section>
-    <h2 class="section-title">Professional Summary</h2>
-    <div class="cards">
-      <div class="card">
-        <p>Passionate and detail-oriented Full-Stack Software Engineer with hands-on experience building real-world systems across healthcare, education, e-commerce, and enterprise operations. Skilled in frontend and backend development, machine learning, and system optimization. Known for delivering clean, scalable solutions and collaborating effectively in team environments. Driven by a strong desire to solve problems through technology and continuous learning.</p>
+    .profile-img{
+      width:100%; height:100%;
+      border-radius:50%;
+      object-fit:cover;
+      border:4px solid var(--accent);
+      box-shadow:0 8px 30px rgba(6,182,212,0.3);
+      transition:0.3s;
+    }
+
+    .profile-img:hover{ transform:scale(1.05); }
+
+    /* SECTION GENERIC STYLES */
+    .section{ padding:4rem 0; }
+    .section-header{ text-align:center; margin-bottom:3rem; }
+    .section-badge{
+      display:inline-block;
+      background:rgba(6,182,212,0.1);
+      padding:0.5rem 1.25rem;
+      color:var(--accent-light);
+      border-radius:50px;
+      margin-bottom:1rem;
+      font-size:0.875rem;
+      font-weight:600;
+    }
+    .section-title{
+      font-size:2.5rem;
+      font-weight:800;
+      margin-bottom:1rem;
+    }
+    .section-description{
+      color:var(--text-secondary);
+      font-size:1.125rem;
+      max-width:700px;
+      margin:0 auto;
+    }
+
+    /* GRID + CARDS */
+    .cards-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:1.5rem;
+    }
+
+    .card{
+      background:var(--bg-card);
+      padding:2rem;
+      border-radius:var(--radius);
+      border:1px solid var(--border);
+      transition:0.3s;
+      box-shadow:0 4px 15px var(--shadow);
+    }
+    .card:hover{
+      transform:translateY(-8px);
+      border-color:var(--accent);
+      box-shadow:0 12px 30px rgba(6,182,212,0.2);
+    }
+
+    .card-icon{
+      width:50px; height:50px;
+      background:var(--gradient-1);
+      border-radius:12px;
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.5rem;
+      margin-bottom:1.5rem;
+    }
+
+    .card h3{ margin-bottom:0.75rem; font-size:1.375rem; }
+    .meta{ color:var(--accent-light); margin-bottom:1rem; font-weight:600; }
+
+    .card ul{ list-style:none; margin-top:1rem; }
+    .card ul li{
+      color:var(--text-secondary);
+      margin-bottom:0.75rem;
+      padding-left:1.5rem;
+      position:relative;
+    }
+    .card ul li::before{
+      content:'▹';
+      position:absolute;
+      left:0;
+      color:var(--accent);
+    }
+
+    .tech{
+      color:var(--text-muted);
+      font-size:0.875rem;
+      margin-top:1rem;
+    }
+
+    /* SKILLS */
+    .skills-category{ margin-bottom:2.5rem; }
+    .skills-category h3{ color:var(--accent-light); margin-bottom:1rem; }
+    .skills-list{
+      display:flex;
+      gap:0.75rem;
+      flex-wrap:wrap;
+    }
+    .skill-tag{
+      padding:0.625rem 1.25rem;
+      border:1px solid var(--accent);
+      background:rgba(6,182,212,0.1);
+      border-radius:8px;
+      color:white;
+      transition:0.3s;
+    }
+    .skill-tag:hover{
+      background:var(--accent);
+      transform:translateY(-2px);
+    }
+
+    /* FOOTER */
+    footer{
+      padding:3rem 0;
+      border-top:1px solid var(--border);
+      text-align:center;
+      color:var(--text-secondary);
+    }
+    .footer-links{
+      display:flex; justify-content:center; gap:2rem; margin-top:1rem;
+    }
+    .footer-links a{
+      color:var(--accent-light);
+      text-decoration:none;
+      font-weight:500;
+      transition:0.3s;
+    }
+    .footer-links a:hover{ color:var(--accent); }
+
+    /* RESPONSIVE */
+    @media (max-width: 968px){
+      .hero-content{ grid-template-columns:1fr; text-align:center; }
+      .hero-buttons{ justify-content:center; }
+      .tech-stack{ justify-content:center; }
+      .cards-grid{ grid-template-columns:1fr; }
+    }
+
+    @media (max-width: 640px){
+      .nav-links{ display:none; }
+      .btn{ width:100%; justify-content:center; }
+      .hero-text h1{ font-size:2rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-container">
+    <div class="nav-logo">SE</div>
+    <ul class="nav-links">
+      <li><a href="#about"><i class="fa-solid fa-user"></i> About</a></li>
+      <li><a href="#experience"><i class="fa-solid fa-briefcase"></i> Experience</a></li>
+      <li><a href="#projects"><i class="fa-solid fa-code"></i> Projects</a></li>
+      <li><a href="#skills"><i class="fa-solid fa-layer-group"></i> Skills</a></li>
+      <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="container">
+    <div class="hero-content" data-aos="fade-up">
+      <div class="hero-text">
+        <h1>Sylvester Edidiong Emmanuel</h1>
+        <div class="subtitle">Full-Stack Software Engineer</div>
+        <p class="description">
+          I build production-ready web systems and ML-backed solutions. From hospital workflows to event ticketing platforms, I focus on clean UI, reliable backends, and collaborative delivery. Currently transforming ideas into scalable applications at Swavy Global.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">
+            <i class="fa-solid fa-envelope"></i> Let's Talk
+          </a>
+          <a href="sylvester_cv.pdf" target="_blank" class="btn btn-secondary">
+            <i class="fa-solid fa-download"></i> Download CV
+          </a>
+        </div>
+
+        <div class="tech-stack">
+          <span class="tech-badge"><i class="fa-brands fa-react"></i> React</span>
+          <span class="tech-badge"><i class="fa-brands fa-node-js"></i> Node.js</span>
+          <span class="tech-badge"><i class="fa-brands fa-php"></i> PHP</span>
+          <span class="tech-badge"><i class="fa-brands fa-python"></i> Python</span>
+          <span class="tech-badge"><i class="fa-solid fa-database"></i> MySQL</span>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Experience -->
-  <section>
-    <h2 class="section-title">Experience</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Junior Software Engineer – <a href="https://swavyglobal.com/" target="_blank">Swavy Global (2023 – Present)</a></h3>
-        <p>Built hospital management, hotel booking, and internal business systems. Performed software testing, enhanced UI/UX, and contributed to both backend and frontend development using PHP, CodeIgniter, JavaScript, MySQL, and modern web tools.</p>
+      <div class="hero-image" data-aos="fade-left">
+        <div class="profile-card">
+          <div class="profile-img-wrapper">
+            <img src="dp.jpg" alt="Sylvester Edidiong" class="profile-img" />
+          </div>
+          <h3>Junior Software Engineer</h3>
+          <p class="role">Swavy Global • 2023 – Present</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>Virtual Assistant / Technical Support – Swavy Global (2022 – 2024)</h3>
-        <p>Provided technical and administrative support for live systems including College of Nursing Calabar Portal. Managed customer support, data entry, report generation, and documentation. Supported live chat operations and troubleshooting.</p>
-      </div>
-      <div class="card">
-        <h3>Intern – <a href="https://www.unitechenergies.com/" target="_blank">Unitech Drilling Company (2024)</a></h3>
-        <p>Developed a Mud Motor Tracking System using PHP, JS, SQL, and CSS. Assisted in internal documentation, workflow digitization, and system maintenance. Contributed to improving data consistency and operational reporting accuracy.</p>
-      </div>
-      <div class="card">
-        <h3>Intern – Swavy Global, Calabar (2023)</h3>
-        <p>Trained in HTML, CSS, JavaScript, PHP, and CodeIgniter. Worked on frontend development for a journal management website and improved responsiveness and UI quality for FoodExpress.ng.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Education -->
-  <section>
-    <h2 class="section-title">Education</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Monika Kindergarten & Elementary School</h3>
-        <p>Primary Education – Akwa Ibom State, Nigeria</p>
-      </div>
-      <div class="card">
-        <h3><a href="https://topfaith.sch.ng/" target="_blank">Topfaith International Secondary School</a></h3>
-        <p>Secondary Education – Akwa Ibom State, Nigeria (2014 – 2020)</p>
-      </div>
-      <div class="card">
-        <h3><a href="https://topfaith.edu.ng/" target="_blank">Topfaith University</a></h3>
-        <p>Bachelor's Degree in Software Engineering (2021 – 2025)</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section>
-    <h2 class="section-title">Projects</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Face Recognition Attendance System (Django + CNN)</h3>
-        <p>Developed a deep-learning based facial attendance system using Python, Django, and CNN. Designed admin frontend with HTML, CSS, and JS. Built for automated student attendance marking.</p>
-      </div>
-      <div class="card">
-        <h3>Hospital Management System</h3>
-        <p>CodeIgniter-based solution including patient records, appointments, pharmacy, billing, laboratory, and reporting modules.</p>
-      </div>
-      <div class="card">
-        <h3>Hotel Booking & Management System</h3>
-        <p>Internal reservation system built with CodeIgniter and MySQL for room tracking, status updates, and scheduling automation.</p>
-      </div>
-      <div class="card">
-        <h3>Pharmacy Management System</h3>
-        <p>Developed backend logic in PHP and MySQL to handle inventory, billing, and database management. Collaborated in a team of four.</p>
-      </div>
-      <div class="card">
-        <h3>Mud Motor Tracking System</h3>
-        <p>Tracked mud motor usage for Unitech Drilling Company. Built with PHP, SQL, JS, and CSS for local server deployment and reporting.</p>
-      </div>
-      <div class="card">
-        <h3>Ticket Booking App (QR)</h3>
-        <p>Web-based ticket booking platform generating unique QR codes for event entry validation using PHP, JS, and MySQL.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills -->
-  <section>
-    <h2 class="section-title">Skills</h2>
-    <div class="cards">
-      <div class="card"><h3>Frontend</h3><p>HTML5, CSS3, Tailwind CSS, JavaScript (ES6+), React.js, Bootstrap</p></div>
-      <div class="card"><h3>Backend</h3><p>PHP, CodeIgniter, Python, Django, MySQL</p></div>
-      <div class="card"><h3>Tools & Technologies</h3><p>Git, GitHub, VS Code, Notion, Trello, API Integration</p></div>
-      <div class="card"><h3>Other Skills</h3><p>Software Testing, Quality Assurance, Prompt Engineering, Documentation Writing</p></div>
-      <div class="card"><h3>Soft Skills</h3><p>Analytical Thinking, Communication, Team Collaboration, Attention to Detail, Fast Learner</p></div>
-    </div>
-  </section>
-
-  <!-- Interests & Hobbies -->
- <section>
-  <h2 class="section-title">Interests & Hobbies</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Podcast Listening</h3>
-      <p>Enjoy learning through tech and AI-focused podcasts. Keeps me updated with the latest trends.</p>
-    </div>
-    <div class="card">
-      <h3>Watching Sci-Fi & Tech Movies</h3>
-      <p>Sparks creativity and enhances imagination through futuristic and innovative stories.</p>
-    </div>
-    <div class="card">
-      <h3>Mentoring & Community</h3>
-      <p>Actively mentor junior developers and contribute to developer communities through guidance and feedback.</p>
-    </div>
-    <div class="card">
-      <h3>Open Source Contribution</h3>
-      <p>Contribute to open-source projects to improve my coding skills and collaborate globally.</p>
-    </div>
-    <div class="card">
-      <h3>Tech Blogging</h3>
-      <p>Write tutorials and technical articles to share knowledge and help beginners understand complex topics.</p>
     </div>
   </div>
 </section>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 Sylvester Edidiong Emmanuel. All rights reserved. |
-    <a href="mailto:sylvesterofficail20@gmail.com" style="color: #00bcd4;" target="_blank">Email</a> |
-    <a href="https://github.com/sylvesterofficail" style="color: #00bcd4;" target="_blank">GitHub</a> |
-    <a href="https://www.linkedin.com/in/edidiong-sylvester-b91284238" style="color: #00bcd4;" target="_blank">LinkedIn</a> |
-    <a href="https://www.instagram.com/iam_sylvester.1" style="color: #00bcd4;" target="_blank">Instagram</a>
-  </footer>
+<!-- EXPERIENCE -->
+<section class="section" id="experience" style="background:rgba(19,23,64,0.3)">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-badge">CAREER JOURNEY</span>
+      <h2 class="section-title">Professional Experience</h2>
+      <p class="section-description">Building scalable systems across healthcare, hospitality, and enterprise operations</p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card" data-aos="fade-up">
+        <div class="card-icon"><i class="fa-solid fa-code"></i></div>
+        <h3>Junior Software Engineer</h3>
+        <div class="meta">Swavy Global • 2023 – Present</div>
+        <ul>
+          <li>Built Hospital Management System (CodeIgniter) with patient records, appointments, pharmacy, lab results, billing and reporting</li>
+          <li>Developed Hotel Booking & Management System handling reservations, room tracking and payment flows</li>
+          <li>Contributed to Pharmacy Management backend with inventory, prescriptions, sales tracking</li>
+          <li>Improved UI components with React and Tailwind</li>
+        </ul>
+      </div>
+
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-icon"><i class="fa-solid fa-headset"></i></div>
+        <h3>Virtual Assistant / Technical Support</h3>
+        <div class="meta">Swavy Global (Remote) • 2022 – Dec 2024</div>
+        <ul>
+          <li>Provided technical support for live deployments</li>
+          <li>Managed data entry, reporting, and client communications</li>
+          <li>Maintained documentation and assisted live chat support</li>
+          <li>Performed routine troubleshooting and system maintenance</li>
+        </ul>
+      </div>
+
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+        <h3>Software Engineering Intern</h3>
+        <div class="meta">Unitech Drilling Company • 2024</div>
+        <ul>
+          <li>Built Mud Motor Tracking System for equipment performance</li>
+          <li>Automated weekly/monthly operational reports</li>
+          <li>Improved data consistency and operational tracking</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-badge">PORTFOLIO</span>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-description">Real-world applications solving complex business challenges</p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card" data-aos="zoom-in">
+        <div class="card-icon"><i class="fa-solid fa-hospital"></i></div>
+        <h3>Hospital Management System</h3>
+        <p>System with patient records, pharmacy, lab results, appointments, billing, and reporting.</p>
+        <div class="tech">CodeIgniter • PHP • MySQL</div>
+      </div>
+
+      <div class="card" data-aos="zoom-in" data-aos-delay="100">
+        <div class="card-icon"><i class="fa-solid fa-hotel"></i></div>
+        <h3>Hotel Booking & Management</h3>
+        <p>Reservation and room tracking with payment workflows.</p>
+        <div class="tech">CodeIgniter • PHP • MySQL</div>
+      </div>
+
+      <div class="card" data-aos="zoom-in" data-aos-delay="200">
+        <div class="card-icon"><i class="fa-solid fa-ticket"></i></div>
+        <h3>Event Ticketing Platform</h3>
+        <p>QR code ticket generation & scanning with event dashboard.</p>
+        <div class="tech">React • Node.js • Express</div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-face-smile"></i></div>
+        <h3>Face Recognition Attendance</h3>
+        <p>CNN-based automated attendance system.</p>
+        <div class="tech">Django • Python • CNN</div>
+      </div>
+
+      <div class="card" data-aos="zoom-in" data-aos-delay="100">
+        <div class="card-icon"><i class="fa-solid fa-pills"></i></div>
+        <h3>Pharmacy Management System</h3>
+        <p>Inventory, prescriptions, sales & reporting backend.</p>
+        <div class="tech">PHP • MySQL</div>
+      </div>
+
+      <div class="card" data-aos="zoom-in" data-aos-delay="200">
+        <div class="card-icon"><i class="fa-solid fa-oil-well"></i></div>
+        <h3>Mud Motor Tracking System</h3>
+        <p>Operational reporting for drilling equipment.</p>
+        <div class="tech">PHP • SQL • JS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills" style="background: rgba(19, 23, 64, 0.3);">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-badge">TECHNICAL EXPERTISE</span>
+      <h2 class="section-title">Skills & Technologies</h2>
+      <p class="section-description">Frameworks, languages and tools I use</p>
+    </div>
+
+    <div data-aos="fade-up">
+      <div class="skills-category">
+        <h3><i class="fa-solid fa-palette"></i> Frontend</h3>
+        <div class="skills-list">
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">Tailwind</span>
+          <span class="skill-tag">Bootstrap</span>
+        </div>
+      </div>
+
+      <div class="skills-category">
+        <h3><i class="fa-solid fa-server"></i> Backend</h3>
+        <div class="skills-list">
+          <span class="skill-tag">PHP</span>
+          <span class="skill-tag">CodeIgniter</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Express</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Django</span>
+        </div>
+      </div>
+
+      <div class="skills-category">
+        <h3><i class="fa-solid fa-database"></i> Databases</h3>
+        <div class="skills-list">
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Database Design</span>
+        </div>
+      </div>
+
+      <div class="skills-category">
+        <h3><i class="fa-solid fa-brain"></i> Machine Learning</h3>
+        <div class="skills-list">
+          <span class="skill-tag">CNN</span>
+          <span class="skill-tag">Computer Vision</span>
+          <span class="skill-tag">TensorFlow</span>
+        </div>
+      </div>
+
+      <div class="skills-category">
+        <h3><i class="fa-solid fa-tools"></i> Tools</h3>
+        <div class="skills-list">
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">Notion</span>
+          <span class="skill-tag">Trello</span>
+          <span class="skill-tag">QA Testing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-badge">BACKGROUND</span>
+      <h2 class="section-title">Education & Interests</h2>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card" data-aos="fade-up">
+        <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <h3>Topfaith University</h3>
+        <div class="meta">2021 – 2025</div>
+        <p>B.Sc in Software Engineering</p>
+      </div>
+
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-icon"><i class="fa-solid fa-podcast"></i></div>
+        <h3>Continuous Learning</h3>
+        <p>Active podcast listener, tech trends follower, and mentor.</p>
+      </div>
+
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <div class="card-icon"><i class="fa-solid fa-pen-to-square"></i></div>
+        <h3>Tech Blogging</h3>
+        <p>Write tutorials & contribute to open-source.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact" style="background: rgba(19, 23, 64, 0.3);">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-badge">GET IN TOUCH</span>
+      <h2 class="section-title">Let's Work Together</h2>
+      <p class="section-description">Available for freelance and full-time roles.</p>
+    </div>
+
+    <div style="text-align:center; margin-top:3rem" data-aos="fade-up">
+      <div class="hero-buttons" style="justify-content:center;">
+        <a href="mailto:sylvesterofficail20@gmail.com" class="btn btn-primary">
+          <i class="fa-solid fa-envelope"></i> Email Me
+        </a>
+        <a href="tel:+2348143972347" class="btn btn-secondary">
+          <i class="fa-solid fa-phone"></i> Call: 0814 397 2347
+        </a>
+        <a href="sylvester_cv.pdf" target="_blank" class="btn btn-secondary">
+          <i class="fa-solid fa-download"></i> Download CV
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Sylvester Edidiong Emmanuel. All rights reserved.</p>
+
+    <div class="footer-links">
+      <a href="mailto:sylvesterofficail20@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
+      <a href="https://github.com/sylvesterofficail" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+      <a href="https://linkedin.com/in/sylvester-edidiong" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<!-- AOS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init({
+    once: true,
+    duration: 800,
+    easing: 'ease-out-cubic',
+    offset: 100
+  });
+
+  // Smooth scrolling (fixed version)
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
