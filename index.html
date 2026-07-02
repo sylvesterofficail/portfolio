@@ -567,6 +567,81 @@ section { position: relative; z-index: 1; }
   border-radius: 2px;
   letter-spacing: 0.05em;
 }
+.exp-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--gold);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  margin-bottom: 0.75rem;
+}
+
+/* ACIES SPOTLIGHT */
+.acies-spotlight {
+  border: 1px solid var(--gold-border);
+  background: linear-gradient(135deg, rgba(212,168,83,0.06), transparent 60%);
+  border-radius: 4px;
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.acies-spotlight::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--gold);
+}
+.acies-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.acies-title {
+  font-family: var(--display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+.acies-text {
+  color: var(--white-dim);
+  font-weight: 300;
+  line-height: 1.8;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+.acies-list { list-style: none; margin-bottom: 1.5rem; }
+.acies-list li {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
+  color: var(--white-dim);
+  font-size: 0.88rem;
+  font-weight: 300;
+}
+.acies-list li::before {
+  content: '✦';
+  color: var(--gold);
+  font-size: 0.7rem;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+.acies-stats-row {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
 
 /* PROJECTS */
 .projects-grid {
@@ -632,6 +707,20 @@ section { position: relative; z-index: 1; }
   font-size: 0.65rem;
   color: var(--gold);
   letter-spacing: 0.05em;
+  position: relative;
+  z-index: 1;
+}
+.project-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold-border);
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+  margin-bottom: 1rem;
   position: relative;
   z-index: 1;
 }
@@ -972,6 +1061,7 @@ footer {
   .skills-layout { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
   .edu-grid { grid-template-columns: 1fr; }
+  .acies-spotlight { grid-template-columns: 1fr; padding: 2rem; }
 }
 @media (max-width: 768px) {
   .nav-links { display: none; }
@@ -983,7 +1073,8 @@ footer {
   .exp-date { text-align: left; }
   .exp-line { display: none; }
   .hero-name { font-size: 2.5rem; }
-  .hero-stats { gap: 1.5rem; }
+  .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+  .acies-spotlight { padding: 1.5rem; }
 }
 </style>
 </head>
@@ -1000,11 +1091,12 @@ footer {
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#acies">Acies</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <div class="nav-status">Available for work</div>
+    <div class="nav-status">Open to opportunities</div>
   </div>
 </nav>
 
@@ -1014,14 +1106,14 @@ footer {
   <div class="hero-ambient-2"></div>
   <div class="hero-inner">
     <div class="hero-text">
-      <div class="hero-label">Full-Stack Software Engineer</div>
+      <div class="hero-label">Software Engineer · Founder, Acies Africa Technologies</div>
       <h1 class="hero-name">
         <span class="line-1">Sylvester</span>
         <span class="line-2">Edidiong</span>
         <span class="line-3">Emmanuel</span>
       </h1>
       <p class="hero-desc">
-        I architect and ship production-grade web systems — from hospital management platforms and school ERP systems to real estate portals and AI-backed attendance tools. Based in Nigeria, building for global scale.
+        Full-stack software engineer currently serving my NYSC year as a Software Engineer at the Energy Commission of Nigeria, developing the ECN Smart Operations &amp; Resource Management System (ECN-SORMS). I also founded Acies Africa Technologies, building affordable, world-class software for hospitals, hotels, schools, and SMEs across Africa — from hospital management platforms to AI-backed attendance tools.
       </p>
       <div class="hero-cta">
         <a href="#contact" class="btn-gold"><span>Let's Talk</span></a>
@@ -1029,16 +1121,16 @@ footer {
       </div>
       <div class="hero-stats">
         <div class="stat">
-          <span class="stat-num">3+</span>
+          <span class="stat-num">4+</span>
           <span class="stat-label">Years Experience</span>
         </div>
         <div class="stat">
-          <span class="stat-num">10+</span>
+          <span class="stat-num">14+</span>
           <span class="stat-label">Projects Shipped</span>
         </div>
         <div class="stat">
-          <span class="stat-num">6+</span>
-          <span class="stat-label">Tech Stacks</span>
+          <span class="stat-num">1</span>
+          <span class="stat-label">Company Founded</span>
         </div>
       </div>
     </div>
@@ -1052,7 +1144,7 @@ footer {
           </div>
         </div>
         <div class="profile-name">Sylvester E. Emmanuel</div>
-        <div class="profile-role">Junior Software Engineer · Swavy Global</div>
+        <div class="profile-role">Software Engineer · Energy Commission of Nigeria (NYSC)</div>
         <div class="profile-divider"></div>
         <div class="profile-info-row">
           <div class="profile-info-icon">📍</div>
@@ -1061,6 +1153,10 @@ footer {
         <div class="profile-info-row">
           <div class="profile-info-icon">🎓</div>
           <div class="profile-info-text"><strong>B.Sc Software Engineering</strong> — Topfaith University</div>
+        </div>
+        <div class="profile-info-row">
+          <div class="profile-info-icon">🏢</div>
+          <div class="profile-info-text"><strong>Founder</strong> — Acies Africa Technologies</div>
         </div>
         <div class="profile-info-row">
           <div class="profile-info-icon">⚡</div>
@@ -1083,10 +1179,12 @@ footer {
     <span class="marquee-item">TypeScript</span>
     <span class="marquee-item">PHP</span>
     <span class="marquee-item">CodeIgniter</span>
+    <span class="marquee-item">Laravel</span>
     <span class="marquee-item">Python</span>
     <span class="marquee-item">Django</span>
     <span class="marquee-item">Express.js</span>
     <span class="marquee-item">MySQL</span>
+    <span class="marquee-item">MongoDB</span>
     <span class="marquee-item">TensorFlow</span>
     <span class="marquee-item">Tailwind CSS</span>
     <span class="marquee-item">Full-Stack Development</span>
@@ -1095,10 +1193,12 @@ footer {
     <span class="marquee-item">TypeScript</span>
     <span class="marquee-item">PHP</span>
     <span class="marquee-item">CodeIgniter</span>
+    <span class="marquee-item">Laravel</span>
     <span class="marquee-item">Python</span>
     <span class="marquee-item">Django</span>
     <span class="marquee-item">Express.js</span>
     <span class="marquee-item">MySQL</span>
+    <span class="marquee-item">MongoDB</span>
     <span class="marquee-item">TensorFlow</span>
     <span class="marquee-item">Tailwind CSS</span>
     <span class="marquee-item">Full-Stack Development</span>
@@ -1111,14 +1211,40 @@ footer {
     <div class="reveal">
       <div class="section-label">Career Journey</div>
       <h2 class="section-title">Experience</h2>
-      <p class="section-sub">Building scalable systems across healthcare, hospitality, energy, and enterprise operations.</p>
+      <p class="section-sub">Building scalable systems across government, healthcare, hospitality, energy, and enterprise operations.</p>
     </div>
     <div class="experience-wrap">
 
       <div class="exp-item">
         <div class="exp-date">
-          <span class="exp-date-range">2023 — Present</span>
-          <span class="exp-company">Swavy Global</span>
+          <span class="exp-date-range">May 2026 — Present</span>
+          <span class="exp-company">Energy Commission of Nigeria</span>
+        </div>
+        <div class="exp-line">
+          <div class="exp-dot"></div>
+          <div class="exp-connector"></div>
+        </div>
+        <div class="exp-content">
+          <span class="exp-badge">Current Role · NYSC</span>
+          <div class="exp-role">Software Engineer, ICT Department</div>
+          <ul class="exp-bullets">
+            <li>Developing and maintaining enterprise software for the ECN Smart Operations &amp; Resource Management System (ECN-SORMS)</li>
+            <li>Supporting system architecture, technical documentation, and deployment workflows for a national government agency</li>
+            <li>Working within the ICT Department to modernise internal operations and resource management processes</li>
+          </ul>
+          <div class="exp-tech-row">
+            <span class="tech-pill">Enterprise Systems</span>
+            <span class="tech-pill">System Architecture</span>
+            <span class="tech-pill">PHP</span>
+            <span class="tech-pill">MySQL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">
+          <span class="exp-date-range">Feb 2025 — Present</span>
+          <span class="exp-company">Swavy Global · Remote</span>
         </div>
         <div class="exp-line">
           <div class="exp-dot"></div>
@@ -1127,22 +1253,44 @@ footer {
         <div class="exp-content">
           <div class="exp-role">Junior Software Engineer</div>
           <ul class="exp-bullets">
-            <li>Architected and delivered a full Hospital Management System with patient records, appointments, pharmacy module, lab results, billing, and multi-role dashboards</li>
-            <li>Built a Hotel Booking & Management System with live room availability, reservation workflows, and integrated payment processing</li>
-            <li>Developed a School Management System with student enrollment, fee payment, timetables, results portal, and admin reporting</li>
-            <li>Engineered a Real Estate platform with property listings, agent dashboards, client inquiry flows, and document management</li>
-            <li>Built Inventory & POS applications for retail operations with real-time stock tracking, sales analytics, and receipt generation</li>
-            <li>Shipped a Pharmacy Management System covering stock control, prescription handling, and sales reporting</li>
-            <li>Improved frontend UI components with React, Tailwind CSS, and TypeScript for several client-facing dashboards</li>
+            <li>Contributed to hotel management and reservation system development with live availability and booking workflows</li>
+            <li>Built and tested FoodExpress.ng, ensuring feature stability and UI consistency across releases</li>
+            <li>Collaborated using Git, agile practices, and structured version control workflows within a distributed team</li>
           </ul>
           <div class="exp-tech-row">
             <span class="tech-pill">PHP</span>
             <span class="tech-pill">CodeIgniter</span>
+            <span class="tech-pill">JavaScript</span>
+            <span class="tech-pill">Git</span>
+            <span class="tech-pill">Agile</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">
+          <span class="exp-date-range">2024 — Present</span>
+          <span class="exp-company">Acies Africa Technologies</span>
+        </div>
+        <div class="exp-line">
+          <div class="exp-dot"></div>
+          <div class="exp-connector"></div>
+        </div>
+        <div class="exp-content">
+          <span class="exp-badge">Founder</span>
+          <div class="exp-role">Founder &amp; Lead Engineer</div>
+          <ul class="exp-bullets">
+            <li>Established and registered a technology startup delivering affordable, world-class software for hospitals, hotels, and SMEs across Africa</li>
+            <li>Built Hospital Management, Hotel Management, Inventory Management, and HR Management software from the ground up</li>
+            <li>Leading development of an Events Ticketing &amp; Management System (React.js + Node.js + MongoDB)</li>
+            <li>Grew the team to include a CTO and Chief Data Officer, expanding into government, education, and real estate software</li>
+          </ul>
+          <div class="exp-tech-row">
             <span class="tech-pill">React</span>
-            <span class="tech-pill">TypeScript</span>
             <span class="tech-pill">Node.js</span>
-            <span class="tech-pill">MySQL</span>
-            <span class="tech-pill">Tailwind</span>
+            <span class="tech-pill">MongoDB</span>
+            <span class="tech-pill">CodeIgniter</span>
+            <span class="tech-pill">Leadership</span>
           </div>
         </div>
       </div>
@@ -1150,7 +1298,7 @@ footer {
       <div class="exp-item">
         <div class="exp-date">
           <span class="exp-date-range">2024</span>
-          <span class="exp-company">Unitech Drilling</span>
+          <span class="exp-company">Unitech Drilling Company</span>
         </div>
         <div class="exp-line">
           <div class="exp-dot"></div>
@@ -1159,11 +1307,12 @@ footer {
         <div class="exp-content">
           <div class="exp-role">Software Engineering Intern</div>
           <ul class="exp-bullets">
-            <li>Built a Mud Motor Tracking System for operational equipment performance monitoring in drilling operations</li>
+            <li>Built and deployed a Mud Motor Tracking System for operational equipment performance monitoring in drilling operations</li>
             <li>Automated weekly and monthly operational report generation, replacing manual spreadsheet workflows</li>
             <li>Improved data consistency and traceability across field operations tracking</li>
           </ul>
           <div class="exp-tech-row">
+            <span class="tech-pill">HTML/CSS</span>
             <span class="tech-pill">PHP</span>
             <span class="tech-pill">JavaScript</span>
             <span class="tech-pill">SQL</span>
@@ -1173,17 +1322,17 @@ footer {
 
       <div class="exp-item">
         <div class="exp-date">
-          <span class="exp-date-range">2022 — 2024</span>
-          <span class="exp-company">Swavy Global</span>
+          <span class="exp-date-range">2023 — Dec 2024</span>
+          <span class="exp-company">Swavy Global · Remote</span>
         </div>
         <div class="exp-line">
           <div class="exp-dot"></div>
           <div class="exp-connector"></div>
         </div>
         <div class="exp-content">
-          <div class="exp-role">Virtual Assistant / Technical Support</div>
+          <div class="exp-role">Technical Support / Virtual Assistant</div>
           <ul class="exp-bullets">
-            <li>Provided technical support for live web deployments and client-facing systems</li>
+            <li>Provided technical support for live web deployments and client-facing systems, including education portals</li>
             <li>Managed data entry pipelines, reporting dashboards, and client communications</li>
             <li>Performed routine troubleshooting, system maintenance, and live chat support</li>
           </ul>
@@ -1195,21 +1344,98 @@ footer {
         </div>
       </div>
 
+      <div class="exp-item">
+        <div class="exp-date">
+          <span class="exp-date-range">2021 — 2023</span>
+          <span class="exp-company">Swavy Global</span>
+        </div>
+        <div class="exp-line">
+          <div class="exp-dot"></div>
+          <div class="exp-connector"></div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Frontend Development Intern</div>
+          <ul class="exp-bullets">
+            <li>Developed a journal publishing website and improved the frontend of FoodExpress.ng (June – Oct 2023)</li>
+            <li>Applied foundational web development skills to real-world projects, creating basic websites for brands and companies (2021 – 2022)</li>
+          </ul>
+          <div class="exp-tech-row">
+            <span class="tech-pill">HTML</span>
+            <span class="tech-pill">CSS</span>
+            <span class="tech-pill">Bootstrap</span>
+            <span class="tech-pill">JavaScript</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ACIES SPOTLIGHT -->
+<section class="dark-section section-wrap" id="acies">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Entrepreneurship</div>
+      <h2 class="section-title">Acies Africa Technologies</h2>
+      <p class="section-sub">A company I founded in 2024 to bring affordable, world-class software to African businesses and institutions.</p>
+    </div>
+    <div class="acies-spotlight reveal">
+      <div>
+        <div class="acies-eyebrow">// FOUNDER STORY</div>
+        <div class="acies-title">Building software that Africa can actually afford.</div>
+        <p class="acies-text">
+          What started as freelance apps and websites for local businesses in university grew into Acies Africa Technologies — a fully registered software company built alongside two coursemates from Topfaith University. As founder, I lead product direction and engineering while our CTO and Chief Data Officer drive execution across the stack.
+        </p>
+        <ul class="acies-list">
+          <li>Registered with Nigeria's Corporate Affairs Commission (CAC) — January 2026</li>
+          <li>Delivers software for government, healthcare, education, hospitality, real estate, and legal practices</li>
+          <li>Built and shipped Hospital, Hotel, Inventory, and HR Management systems for real clients</li>
+          <li>Currently leading an Events Ticketing &amp; Management System built on React.js, Node.js, and MongoDB</li>
+        </ul>
+        <div class="acies-stats-row">
+          <div class="stat">
+            <span class="stat-num">2024</span>
+            <span class="stat-label">Founded</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">3</span>
+            <span class="stat-label">Founding Team</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">10+</span>
+            <span class="stat-label">Industries Served</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="acies-preview.jpg" alt="Acies Africa Technologies website preview" style="width:100%; border-radius:4px; border:1px solid var(--gold-border); display:block;" onerror="this.style.display='none'">
+      </div>
     </div>
   </div>
 </section>
 
 <!-- PROJECTS -->
-<section class="dark-section section-wrap" id="projects">
+<section class="section-wrap" id="projects">
   <div class="container">
     <div class="reveal">
       <div class="section-label">Portfolio</div>
       <h2 class="section-title">Featured Projects</h2>
-      <p class="section-sub">Production systems solving real-world business challenges across multiple industries.</p>
+      <p class="section-sub">Production systems solving real-world business challenges across multiple industries — built at Swavy Global, Acies Africa Technologies, and the Energy Commission of Nigeria.</p>
     </div>
     <div class="projects-grid reveal">
       <div class="project-card">
         <div class="project-number">01</div>
+        <span class="project-tag">ECN · Current</span>
+        <span class="project-icon">⚙️</span>
+        <div class="project-arrow">↗</div>
+        <div class="project-title">ECN Smart Operations &amp; Resource Management System</div>
+        <div class="project-desc">Ongoing enterprise system for the Energy Commission of Nigeria, streamlining internal operations, resource tracking, and reporting for a national government agency.</div>
+        <div class="project-stack">PHP · MySQL · Enterprise Architecture</div>
+      </div>
+      <div class="project-card">
+        <div class="project-number">02</div>
+        <span class="project-tag">Acies</span>
         <span class="project-icon">🏥</span>
         <div class="project-arrow">↗</div>
         <div class="project-title">Hospital Management System</div>
@@ -1217,63 +1443,80 @@ footer {
         <div class="project-stack">CodeIgniter · PHP · MySQL · Bootstrap</div>
       </div>
       <div class="project-card">
-        <div class="project-number">02</div>
-        <span class="project-icon">🏫</span>
-        <div class="project-arrow">↗</div>
-        <div class="project-title">School Management System</div>
-        <div class="project-desc">Full-featured school ERP with student enrollment, fee payment tracking, timetable management, results portal, and staff administration.</div>
-        <div class="project-stack">PHP · MySQL · JavaScript · Tailwind</div>
-      </div>
-      <div class="project-card">
         <div class="project-number">03</div>
-        <span class="project-icon">🏘️</span>
-        <div class="project-arrow">↗</div>
-        <div class="project-title">Real Estate Platform</div>
-        <div class="project-desc">Property listing portal with agent dashboards, inquiry management, document uploads, client matching, and lead tracking system.</div>
-        <div class="project-stack">React · Node.js · Express · MySQL</div>
-      </div>
-      <div class="project-card">
-        <div class="project-number">04</div>
         <span class="project-icon">🏨</span>
         <div class="project-arrow">↗</div>
-        <div class="project-title">Hotel Booking & Management</div>
-        <div class="project-desc">Room reservation system with live availability tracking, check-in/check-out flows, housekeeping management, and integrated payment workflows.</div>
+        <div class="project-title">Hotel Management System</div>
+        <div class="project-desc">Room reservation system with live availability tracking, check-in/check-out flows, housekeeping management, and booking automation.</div>
         <div class="project-stack">CodeIgniter · PHP · MySQL</div>
       </div>
       <div class="project-card">
-        <div class="project-number">05</div>
-        <span class="project-icon">🛒</span>
+        <div class="project-number">04</div>
+        <span class="project-tag">Acies</span>
+        <span class="project-icon">🎟️</span>
         <div class="project-arrow">↗</div>
-        <div class="project-title">Inventory & POS Application</div>
-        <div class="project-desc">Retail-ready point-of-sale system with real-time stock tracking, barcode scanning support, sales analytics, and receipt generation.</div>
-        <div class="project-stack">PHP · JavaScript · MySQL</div>
+        <div class="project-title">Events Ticketing &amp; Management System</div>
+        <div class="project-desc">Ongoing startup project for Acies Africa Technologies — QR-code ticketing, event dashboards, attendee tracking, and payment integration.</div>
+        <div class="project-stack">React.js · Node.js · MongoDB</div>
+      </div>
+      <div class="project-card">
+        <div class="project-number">05</div>
+        <span class="project-icon">🏫</span>
+        <div class="project-arrow">↗</div>
+        <div class="project-title">School Management Software</div>
+        <div class="project-desc">Academic records and administration platform with student enrollment, timetables, results, and staff management.</div>
+        <div class="project-stack">React.js · Node.js · MongoDB</div>
       </div>
       <div class="project-card">
         <div class="project-number">06</div>
-        <span class="project-icon">🎟️</span>
+        <span class="project-icon">🏘️</span>
         <div class="project-arrow">↗</div>
-        <div class="project-title">Event Ticketing Platform</div>
-        <div class="project-desc">QR-code ticket generation and scanning system with event management dashboard, attendee tracking, and payment integration.</div>
-        <div class="project-stack">React · Node.js · Express</div>
+        <div class="project-title">Real Estate CRM</div>
+        <div class="project-desc">Customer relationship management platform for property businesses — listings, agent dashboards, and client inquiry tracking.</div>
+        <div class="project-stack">CodeIgniter · Bootstrap</div>
       </div>
       <div class="project-card">
         <div class="project-number">07</div>
-        <span class="project-icon">💊</span>
+        <span class="project-icon">🛒</span>
         <div class="project-arrow">↗</div>
-        <div class="project-title">Pharmacy Management System</div>
-        <div class="project-desc">Full pharmacy backend with drug inventory control, prescription management, expiry alerts, sales tracking, and supplier management.</div>
-        <div class="project-stack">PHP · MySQL</div>
+        <div class="project-title">Inventory &amp; Pharmacy Management</div>
+        <div class="project-desc">Product tracking, reporting, and sales management for retail and pharmacy operations, with expiry alerts and supplier management.</div>
+        <div class="project-stack">CodeIgniter · MySQL</div>
       </div>
       <div class="project-card">
         <div class="project-number">08</div>
-        <span class="project-icon">🧠</span>
+        <span class="project-icon">☁️</span>
         <div class="project-arrow">↗</div>
-        <div class="project-title">Face Recognition Attendance</div>
-        <div class="project-desc">CNN-based automated attendance system using computer vision to identify and log student/staff attendance in real-time without manual input.</div>
-        <div class="project-stack">Django · Python · CNN · TensorFlow</div>
+        <div class="project-title">Cloud Point of Sale (POS)</div>
+        <div class="project-desc">Cloud-based transaction and sales management system for retail businesses, built for reliability and real-time reporting.</div>
+        <div class="project-stack">Python · Django</div>
       </div>
       <div class="project-card">
         <div class="project-number">09</div>
+        <span class="project-icon">🍽️</span>
+        <div class="project-arrow">↗</div>
+        <div class="project-title">Restaurant Management Software</div>
+        <div class="project-desc">Order tracking, billing, and workflow optimisation for restaurants and food businesses, from kitchen to checkout.</div>
+        <div class="project-stack">PHP · MySQL · JavaScript</div>
+      </div>
+      <div class="project-card">
+        <div class="project-number">10</div>
+        <span class="project-icon">👥</span>
+        <div class="project-arrow">↗</div>
+        <div class="project-title">HR Management Software</div>
+        <div class="project-desc">Payroll processing, employee records, and performance tracking system built for growing teams and businesses.</div>
+        <div class="project-stack">PHP · MySQL</div>
+      </div>
+      <div class="project-card">
+        <div class="project-number">11</div>
+        <span class="project-icon">🧠</span>
+        <div class="project-arrow">↗</div>
+        <div class="project-title">Face Recognition Attendance System</div>
+        <div class="project-desc">CNN-based automated attendance system using computer vision to identify and log student/staff attendance in real-time without manual input.</div>
+        <div class="project-stack">Django · Python · CNN · TensorFlow · Tkinter</div>
+      </div>
+      <div class="project-card">
+        <div class="project-number">12</div>
         <span class="project-icon">⛽</span>
         <div class="project-arrow">↗</div>
         <div class="project-title">Mud Motor Tracking System</div>
@@ -1285,7 +1528,7 @@ footer {
 </section>
 
 <!-- SKILLS -->
-<section class="section-wrap" id="skills">
+<section class="dark-section section-wrap" id="skills">
   <div class="container">
     <div class="reveal">
       <div class="section-label">Technical Expertise</div>
@@ -1312,12 +1555,12 @@ footer {
           <div class="skills-chips">
             <span class="skill-chip featured">PHP</span>
             <span class="skill-chip featured">CodeIgniter</span>
-            <span class="skill-chip">Laravel (basics)</span>
+            <span class="skill-chip">Laravel</span>
             <span class="skill-chip">REST APIs</span>
           </div>
         </div>
         <div class="skill-group">
-          <div class="skill-group-name">Python & ML</div>
+          <div class="skill-group-name">Python &amp; ML</div>
           <div class="skills-chips">
             <span class="skill-chip featured">Python</span>
             <span class="skill-chip featured">Django</span>
@@ -1384,13 +1627,15 @@ footer {
           </div>
         </div>
         <div class="skill-group" style="margin-top:2rem">
-          <div class="skill-group-name">Databases & Tools</div>
+          <div class="skill-group-name">Databases, Tools &amp; Practices</div>
           <div class="skills-chips">
             <span class="skill-chip featured">MySQL</span>
+            <span class="skill-chip featured">MongoDB</span>
             <span class="skill-chip">SQL</span>
             <span class="skill-chip">Database Design</span>
             <span class="skill-chip">Git</span>
             <span class="skill-chip">GitHub</span>
+            <span class="skill-chip">Agile</span>
             <span class="skill-chip">Notion</span>
             <span class="skill-chip">Trello</span>
             <span class="skill-chip">QA Testing</span>
@@ -1403,17 +1648,17 @@ footer {
 </section>
 
 <!-- EDUCATION -->
-<section class="dark-section section-wrap">
+<section class="section-wrap">
   <div class="container">
     <div class="reveal">
       <div class="section-label">Background</div>
-      <h2 class="section-title">Education & Interests</h2>
+      <h2 class="section-title">Education &amp; Interests</h2>
     </div>
     <div class="edu-grid reveal">
       <div class="edu-card">
         <span class="edu-icon">🎓</span>
         <div class="edu-title">Topfaith University</div>
-        <div class="edu-meta">2021 — 2025 · B.Sc Software Engineering</div>
+        <div class="edu-meta">Nov 2021 — Oct 2025 · B.Sc Software Engineering</div>
         <div class="edu-desc">Studied software engineering fundamentals, data structures, algorithms, machine learning, database systems, and web development.</div>
       </div>
       <div class="edu-card">
@@ -1423,17 +1668,17 @@ footer {
         <div class="edu-desc">Active tech podcast listener, open-source contributor, and peer mentor for junior developers getting into software engineering.</div>
       </div>
       <div class="edu-card">
-        <span class="edu-icon">✍️</span>
-        <div class="edu-title">Tech Blogging</div>
-        <div class="edu-meta">Tutorials & Documentation</div>
-        <div class="edu-desc">Writes beginner-to-intermediate technical tutorials, developer guides, and contributes to open-source documentation projects.</div>
+        <span class="edu-icon">🎮</span>
+        <div class="edu-title">Beyond the Code</div>
+        <div class="edu-meta">Interests</div>
+        <div class="edu-desc">AI &amp; machine learning, gaming, music, and socialising — outside of building software and growing Acies Africa Technologies.</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section class="section-wrap" id="contact">
+<section class="dark-section section-wrap" id="contact">
   <div class="container">
     <div class="contact-grid">
       <div class="reveal">
@@ -1454,7 +1699,7 @@ footer {
             <div class="contact-link-icon">📞</div>
             <div>
               <div class="contact-link-label">Phone</div>
-              <div class="contact-link-value">+234 814 397 2347</div>
+              <div class="contact-link-value">+234 814 397 2347 · +234 808 984 6392</div>
             </div>
           </a>
           <a href="https://github.com/sylvesterofficail" target="_blank" class="contact-link">
@@ -1464,11 +1709,18 @@ footer {
               <div class="contact-link-value">github.com/sylvesterofficail</div>
             </div>
           </a>
-          <a href="https://linkedin.com/in/sylvester-edidiong" target="_blank" class="contact-link">
+          <a href="https://linkedin.com/in/edidiong-sylvester-b91284238" target="_blank" class="contact-link">
             <div class="contact-link-icon">in</div>
             <div>
               <div class="contact-link-label">LinkedIn</div>
-              <div class="contact-link-value">linkedin.com/in/sylvester-edidiong</div>
+              <div class="contact-link-value">linkedin.com/in/edidiong-sylvester-b91284238</div>
+            </div>
+          </a>
+          <a href="https://sylvesterofficail.github.io/portfolio" target="_blank" class="contact-link">
+            <div class="contact-link-icon">🌐</div>
+            <div>
+              <div class="contact-link-label">Portfolio</div>
+              <div class="contact-link-value">sylvesterofficail.github.io/portfolio</div>
             </div>
           </a>
           <a href="sylvester_cv.pdf" target="_blank" class="contact-link">
@@ -1508,11 +1760,11 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-copy">© 2025 Sylvester Edidiong Emmanuel</div>
+    <div class="footer-copy">© 2026 Sylvester Edidiong Emmanuel</div>
     <div class="footer-socials">
       <a href="mailto:sylvesterofficail20@gmail.com" title="Email">✉</a>
       <a href="https://github.com/sylvesterofficail" target="_blank" title="GitHub">GH</a>
-      <a href="https://linkedin.com/in/sylvester-edidiong" target="_blank" title="LinkedIn">in</a>
+      <a href="https://linkedin.com/in/edidiong-sylvester-b91284238" target="_blank" title="LinkedIn">in</a>
     </div>
   </div>
 </footer>
