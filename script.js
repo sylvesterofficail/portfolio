@@ -11,7 +11,7 @@ const PROJECTS = [
     tags:['Python','NLP','AI'], bg:'linear-gradient(135deg,#0f766e,#115e59 55%,#042f2e)' },
   { f:1, cat:'Business software', icon:'users', org:'Acies Africa', title:'HR Management Software', long:'HR Management Software',
     desc:'Employee records, payroll processing, leave and performance tracking for growing teams, in one place instead of spreadsheets.',
-    tags:['PHP','MySQL'], bg:'linear-gradient(135deg,#9a3412,#7c2d12 55%,#431407)' },
+    tags:['CodeIgniter','PHP','MySQL'], bg:'linear-gradient(135deg,#9a3412,#7c2d12 55%,#431407)' },
   { f:1, cat:'Business software', icon:'receipt', org:'Acies Africa', title:'Cloud POS Software', long:'Cloud Point of Sale (POS) Software',
     desc:'Cloud-based sales and transaction system for retail shops, with stock updates and real-time sales reports from any device.',
     tags:['Python','Django'], bg:'linear-gradient(135deg,#4338ca,#3730a3 55%,#1e1b4b)' },
@@ -27,7 +27,9 @@ const PROJECTS = [
   { cat:'Business software', icon:'bed', org:'Swavy Global', title:'Hotel Management System',
     desc:'Room reservations with live availability, check-in and check-out, housekeeping and booking automation.', tags:['CodeIgniter','PHP','MySQL'] },
   { cat:'Business software', icon:'cap', org:'Acies Africa', title:'School Management Software',
-    desc:'Student enrolment, timetables, results and staff management for schools.', tags:['React.js','Node.js','MongoDB'] },
+    desc:'Student enrolment, timetables, results and staff management for schools.', tags:['CodeIgniter','PHP','MySQL'] },
+  { cat:'Business software', icon:'car', org:'Personal project', title:'Car Rental Management System', link:'https://github.com/sylvesterofficail/Car-Rental-Management-System', linkText:'View on GitHub',
+    desc:'Fleet, booking and rental management for car hire businesses: vehicle availability, customer bookings, pickups and returns.', tags:['Node.js','TypeScript'] },
   { cat:'Business software', icon:'pill', org:'Acies Africa', title:'Inventory & Pharmacy Management',
     desc:'Stock tracking, sales and reports for retail and pharmacies, with expiry alerts and supplier records.', tags:['CodeIgniter','MySQL'] },
   { cat:'Business software', icon:'utensils', org:'Acies Africa', title:'Restaurant Management Software',
@@ -41,7 +43,7 @@ const PROJECTS = [
   { cat:'Websites', icon:'bag', org:'Swavy Global', title:'FoodExpress.ng',
     desc:'Food ordering website. Improved the frontend and built and tested features across releases.', tags:['PHP','CodeIgniter','JavaScript'] },
   { cat:'Websites', icon:'book', org:'Swavy Global', title:'Journal Publishing Website',
-    desc:'Website for submitting, reviewing and publishing academic journal articles.', tags:['HTML','CSS','JavaScript'] },
+    desc:'Website for submitting, reviewing and publishing academic journal articles.', tags:['PHP','Laravel'] },
   { cat:'Websites', icon:'globe', org:'Acies Africa', title:'Acies Africa Technologies Website',
     desc:'Company website presenting Acies services, products and contact channels.', tags:['HTML','CSS','JavaScript'] }
 ];
@@ -152,12 +154,12 @@ function projectList(){
   function draw(){
     const items = PROJECTS.filter(p => current === 'All' || p.cat === current);
     count.textContent = items.length;
-    list.innerHTML = items.map(p => `<article class="proj">
-      <div class="proj-top"><span class="proj-ico" style="background:${p.bg || 'linear-gradient(135deg,#334155,#0f172a)'}"><svg class="ic"><use href="#i-${p.icon}"/></svg></span>
-      <div><h4>${esc(p.long || p.title)}</h4><div class="proj-org">${esc(p.org)}</div></div></div>
-      <p>${esc(p.desc)}</p>
-      <div class="tags">${p.tags.map(t => `<i>${esc(t)}</i>`).join('')}</div>
-      ${p.link ? `<a class="proj-link" href="${p.link}" target="_blank" rel="noopener">Visit site <svg class="ic sm"><use href="#i-arrow"/></svg></a>` : ''}</article>`).join('');
+    list.innerHTML = items.map(p => `<li class="proj-row">
+      <span class="proj-ico" style="background:${p.bg || 'linear-gradient(135deg,#334155,#0f172a)'}"><svg class="ic"><use href="#i-${p.icon}"/></svg></span>
+      <div class="proj-main"><h4>${esc(p.long || p.title)}</h4><div class="proj-org">${esc(p.org)}</div>
+        ${p.link ? `<a class="proj-link" href="${p.link}" target="_blank" rel="noopener">${p.linkText || 'Visit site'} <svg class="ic sm"><use href="#i-arrow"/></svg></a>` : ''}</div>
+      <p class="proj-desc">${esc(p.desc)}</p>
+      <div class="tags">${p.tags.map(t => `<i>${esc(t)}</i>`).join('')}</div></li>`).join('');
   }
   draw();
 }
