@@ -223,8 +223,8 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
   .ventures{grid-template-columns:1fr}
   .album{height:290px}
   .job{grid-template-columns:1fr;gap:4px}
-  .hero-tag{display:none}
-  .hero-name{bottom:78px}
+  .hero-name{bottom:92px}
+  .hero-name .hero-tag{font-size:10px}
   .scroll-cue{display:none}
 }
 @media (max-width:520px){
@@ -268,7 +268,7 @@ section[id]{scroll-margin-top:84px}
 .hero-name h1{font-size:clamp(28px,4.2vw,54px);font-weight:900;letter-spacing:-.03em;line-height:1.05;text-wrap:balance}
 .hero-name p{margin-top:8px;color:var(--muted);font-size:clamp(12px,1.3vw,14px);font-weight:500}
 .hero::after{height:180px;z-index:3;background:linear-gradient(to top,var(--bg) 30%,transparent)}
-.hero-tag{bottom:auto;top:96px}
+.hero-name .hero-tag{position:static;display:inline-flex;margin-top:14px}
 
 /* SORMS strip */
 .sorms{margin:22px 0 4px;padding:18px 20px;border-radius:18px;background:var(--surface-2);border:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px}
@@ -314,3 +314,8 @@ section[id]{scroll-margin-top:84px}
   .proj-desc,.proj-row .tags{grid-column:2}
   .proj-row .tags{justify-content:flex-start}
 }
+.more-wrap{display:flex;justify-content:center;margin-top:24px}
+.contact-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.contact-left .contact-btns .btn-solid{margin-top:0}
+.hero-name{bottom:28px}
+.hero-name p span{white-space:nowrap}

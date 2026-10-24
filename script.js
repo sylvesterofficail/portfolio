@@ -145,22 +145,25 @@ function album(){
 function projectList(){
   const list = document.getElementById('projList'), filters = document.getElementById('filters'), count = document.getElementById('projCount');
   const cats = ['All', ...new Set(PROJECTS.map(p => p.cat))];
-  let current = 'All';
+  let current = 'All', shown = 5; const PAGE = 5; const more = document.getElementById('moreBtn');
   cats.forEach(c => {
     const b = document.createElement('button'); b.textContent = c; b.setAttribute('aria-pressed', c === current);
-    b.addEventListener('click', () => { current = c; filters.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); draw(); });
+    b.addEventListener('click', () => { current = c; shown = PAGE; filters.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); draw(); });
     filters.appendChild(b);
   });
   function draw(){
     const items = PROJECTS.filter(p => current === 'All' || p.cat === current);
     count.textContent = items.length;
-    list.innerHTML = items.map(p => `<li class="proj-row">
+    more.hidden = shown >= items.length;
+    more.textContent = `View more projects (${items.length - shown} left)`;
+    list.innerHTML = items.slice(0, shown).map(p => `<li class="proj-row">
       <span class="proj-ico" style="background:${p.bg || 'linear-gradient(135deg,#334155,#0f172a)'}"><svg class="ic"><use href="#i-${p.icon}"/></svg></span>
       <div class="proj-main"><h4>${esc(p.long || p.title)}</h4><div class="proj-org">${esc(p.org)}</div>
         ${p.link ? `<a class="proj-link" href="${p.link}" target="_blank" rel="noopener">${p.linkText || 'Visit site'} <svg class="ic sm"><use href="#i-arrow"/></svg></a>` : ''}</div>
       <p class="proj-desc">${esc(p.desc)}</p>
       <div class="tags">${p.tags.map(t => `<i>${esc(t)}</i>`).join('')}</div></li>`).join('');
   }
+  more.addEventListener('click', () => { shown += PAGE; draw(); });
   draw();
 }
 
